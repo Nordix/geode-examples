@@ -14,12 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#start locator --name=locator --bind-address=127.0.0.1
-
-#start server --name=server1 --locators=127.0.0.1[10334] --server-port=0 --classpath=../build/classes/java/main
-#start server --name=server2 --locators=127.0.0.1[10334] --server-port=0 --classpath=../build/classes/java/main
-
-#create region --name=example-region --type=PARTITION
-connect
-list members
-describe region --name=example-region
+for i in `seq 1 100`; do
+./start-overload.sh &
+done

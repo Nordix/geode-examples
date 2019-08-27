@@ -102,6 +102,20 @@ subprojects {
         commandLine 'sh', '-c', "gfsh run --file=${projectDir}/scripts/stop.gfsh"
     }
 
+    task start_no_geode_installation(type: Exec, dependsOn: [build, cleanServer]) {
+         workingDir projectDir
+         environment 'GEODE_HOME', installDir
+         environment 'PATH', geodePath
+         commandLine 'sh', '-c', "gfsh run --file=${projectDir}/scripts/start.gfsh"
+    }
+
+    task stop_no_geode_installation(type: Exec) {
+        workingDir projectDir
+        environment 'GEODE_HOME', installDir
+        environment 'PATH', geodePath
+        commandLine 'sh', '-c', "gfsh run --file=${projectDir}/scripts/stop.gfsh"
+    }
+
     task run(type: JavaExec, dependsOn: build) {
         description = 'Run example'
         classpath = sourceSets.main.runtimeClasspath

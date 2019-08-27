@@ -17,6 +17,8 @@ package org.apache.geode_examples.queries;
 import java.io.Serializable;
 
 public class EmployeeData implements Serializable {
+
+
   private static final long serialVersionUID = 1L;
 
   private String firstName;
@@ -25,6 +27,8 @@ public class EmployeeData implements Serializable {
   private String email;
   private int salary;
   private int hoursPerWeek;
+
+  public EmployeeData() {}
 
   public EmployeeData(String firstName, String lastName, int emplNumber, String email, int salary,
       int hoursPerWeek) {
@@ -64,5 +68,29 @@ public class EmployeeData implements Serializable {
     return "EmployeeData [firstName=" + firstName + ", lastName=" + lastName + ", emplNumber="
         + emplNumber + ", email= " + email + ", salary=" + salary + ", hoursPerWeek=" + hoursPerWeek
         + "]";
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setEmplNumber(int emplNumber) {
+    this.emplNumber = emplNumber;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setSalary(int salary) {
+    this.salary = salary;
+  }
+
+  public void setHoursPerWeek(int hoursPerWeek) {
+    this.hoursPerWeek = hoursPerWeek;
   }
 }
