@@ -130,6 +130,7 @@ subprojects {
         description = 'Run example'
         classpath = sourceSets.main.runtimeClasspath
         main = "org.apache.geode_examples.${project.name}.Example"
+        standardInput = System.in
     }
 
     task waitForExitingMembers(type: Exec) {

@@ -16,8 +16,8 @@
 #
 
 # Start the London (ln) cluster
-run --file=./scripts/start-ln.gfsh
-disconnect
+#run --file=./scripts/start-ln.gfsh
+#disconnect
 
 # Start the New York (ny) cluster
 run --file=./scripts/start-ny.gfsh

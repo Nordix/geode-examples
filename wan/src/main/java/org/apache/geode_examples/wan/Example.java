@@ -14,7 +14,9 @@
  */
 package org.apache.geode_examples.wan;
 
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -32,7 +34,7 @@ public class Example {
 
   public static void main(String[] args) {
     // connect to the locator in London cluster using port 10332
-    ClientCache cache = new ClientCacheFactory().addPoolLocator("127.0.0.1", 10332)
+    ClientCache cache = new ClientCacheFactory().addPoolLocator("127.0.0.1", 10331)
         .set("log-level", "WARN").create();
 
     // create a local region that matches the server region
@@ -41,9 +43,15 @@ public class Example {
             .create("example-region");
 
     Example example = new Example(region);
-    example.insertValues(10);
-    example.printValues(example.getValues());
 
+    Scanner input = new Scanner(System.in);
+    boolean repeat = true;
+    while (repeat) {
+      example.insertValues(10000);
+      example.printValues(example.getValues());
+      System.out.print("Press 'n' to stop:");
+      repeat = (input.nextLine().equalsIgnoreCase("n") ? false : true);
+    }
     cache.close();
   }
 
